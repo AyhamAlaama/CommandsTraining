@@ -2,6 +2,8 @@
 using Azure.Messaging.ServiceBus;
 using System.Text.Json;
 using System.Text;
+using Anis.MemeberShip.Command.ly.Extensions;
+using Anis.MemeberShip.Command.ly.Extensions.OutboxMessagesExtensions;
 
 namespace Anis.MemeberShip.Command.ly.Infrastructure.MessageBus;
 
@@ -62,8 +64,8 @@ public class ServiceBusPublisher
                     throw new InvalidOperationException("Event is null," +
                         " please include the event in the query");
                 }
-
-                var json = JsonSerializer.Serialize(message.Event);
+               
+                var json = JsonSerializer.Serialize(message.Event.ToEventMessage());
 
                 var serviceBusMessage = new ServiceBusMessage(Encoding.UTF8.GetBytes(json))
                 {
