@@ -1,5 +1,4 @@
 ﻿using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
@@ -16,9 +15,9 @@ public class BaseEventConfigurations : IEntityTypeConfiguration<Event>
   
 
         var converter = new ValueConverter<AggregateId, string>(
-                            id => id.SubscrptionId.subscrptionId.Replace("/", "")
+                            id => id.SubscrptionId.subscrptionId
                                   + "/"+
-                                  id.MemberId.memberId.Replace("/", ""),
+                                  id.MemberId.memberId,
                             aggregateid => 
                             new AggregateId(
                                (SubscrptionId) aggregateid.Split("/",StringSplitOptions.None)[0],

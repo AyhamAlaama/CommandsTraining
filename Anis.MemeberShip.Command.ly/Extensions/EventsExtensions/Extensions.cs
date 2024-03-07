@@ -16,8 +16,6 @@ public static class Extensions
         new(
            AggregateId: new AggregateId((SubscrptionId)cmd.SubscrptionId,(MemberId)cmd.MemberId),
            Sequence: 1,
-           SubcriptionId: cmd.SubscrptionId,
-           MemberId: cmd.MemberId,
             DateTime: DateTime.UtcNow,
             UserId: cmd.UserId,
             Version:1,
@@ -33,8 +31,6 @@ public static class Extensions
            AggregateId: new AggregateId((SubscrptionId)cmd.SubscrptionId,(MemberId)cmd.MemberId),
 
            Sequence: Sequence,
-           SubcriptionId: cmd.SubscrptionId,
-           MemberId: cmd.MemberId,
             DateTime: DateTime.UtcNow,
             UserId: cmd.UserId,
             Version: 1,
@@ -50,8 +46,6 @@ public static class Extensions
            AggregateId: new AggregateId((SubscrptionId)cmd.SubscrptionId,(MemberId)cmd.MemberId),
 
            Sequence: Sequence,
-           SubcriptionId: cmd.SubscrptionId,
-           MemberId: cmd.MemberId,
             DateTime: DateTime.UtcNow,
             UserId: cmd.UserId,
             Version: 1,
@@ -68,8 +62,6 @@ public static class Extensions
            AggregateId: new AggregateId((SubscrptionId)cmd.SubscrptionId,(MemberId)cmd.MemberId),
 
            Sequence: Sequence, 
-           SubcriptionId: cmd.SubscrptionId,
-           MemberId: cmd.MemberId,
             DateTime: DateTime.UtcNow,
             UserId: cmd.UserId,
             Version: 1,
@@ -85,8 +77,6 @@ public static class Extensions
       new(
          AggregateId: new AggregateId((SubscrptionId)cmd.SubscrptionId, (MemberId)cmd.MemberId),
          Sequence: Sequence,
-         SubcriptionId: cmd.SubscrptionId,
-           MemberId: cmd.MemberId,
           DateTime: DateTime.UtcNow,
           UserId: cmd.UserId,
           Version: 1,

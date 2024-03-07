@@ -5,11 +5,10 @@ namespace Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationRejected
 public record InvitationRejected(
       AggregateId AggregateId,
        int Sequence,
-       string SubcriptionId,
-        string MemberId,
+
        InvitationRejectedData Data,
        string UserId,
        int Version,
        DateTime DateTime
    ) : Event<InvitationRejectedData>
-    (AggregateId, Sequence, SubcriptionId, MemberId, Data, UserId, Version, DateTime);
+    (AggregateId, Sequence, Data, UserId, Version, DateTime);

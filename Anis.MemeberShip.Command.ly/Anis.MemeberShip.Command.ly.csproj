@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.17.4" />
     <PackageReference Include="Calzolari.Grpc.AspNetCore.Validation" Version="6.3.0" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.49.0" />
 	  <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
