@@ -5,8 +5,8 @@ public static class Extensions
     {
         return new EventMessage(
             Id: @event.Id,
-            SubscrptionId: @event.AggregateId.SubscrptionId.subscrptionId,
-            MemberId: @event.AggregateId.MemberId.memberId,
+            AggregateId: @event.AggregateId.SubscrptionId.subscrptionId+"/"+
+                         @event.AggregateId.MemberId.memberId,
             Sequence: @event.Sequence,
             UserId: @event.UserId,
             DateTime: @event.DateTime,
@@ -18,8 +18,7 @@ public static class Extensions
 public record EventMessage
 (
     int Id,
-    string SubscrptionId,
-    string MemberId,
+    string AggregateId,
     int Sequence,
     string UserId,
     int Version,
