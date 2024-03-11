@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "Anis.MemberShip.Query.ly.v1";
+
+service MemberShip {
+ rpc Filter (FilterRequest) returns (FilterResponse);
+}
+message FilterRequest {
+  string id = 1;
+}
+
+message MemberShipOutput {
+  string user_id = 1;
+  string subscrption_id = 2;
+  string account_id = 3;
+  string member_id = 4;
+  string invite_status = 5;
+}
+
+message FilterResponse {
+  repeated MemberShipOutput membershiplist = 1;
+}
