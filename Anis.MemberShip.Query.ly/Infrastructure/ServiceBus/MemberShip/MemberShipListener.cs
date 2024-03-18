@@ -53,7 +53,7 @@ namespace Anis.MemberShip.Query.ly.Infrastructre.ServiceBus.MemberShip
             var isHandled = arg.Message.Subject switch
             {
                 nameof(InvitationSent) => await mediator.Send(Deserialize<InvitationSent>(json)),
-                _ => false,
+                _ => await mediator.Send(Deserialize<UnknownEvent>(json)),
             };
 
             if (isHandled)
