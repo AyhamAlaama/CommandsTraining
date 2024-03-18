@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Text;
 using Anis.MemeberShip.Command.ly.Extensions;
 using Anis.MemeberShip.Command.ly.Extensions.OutboxMessagesExtensions;
+using Anis.MemberShip.Command.ly.Infrastructure.MessageBus;
 
 namespace Anis.MemeberShip.Command.ly.Infrastructure.MessageBus;
 
@@ -60,19 +61,9 @@ public class ServiceBusPublisher
             foreach (var message in messages)
             {
                 if (message.Event is null)
-                {
-                    throw new InvalidOperationException("Event is null," +
-                        " please include the event in the query");
-                }
-               
-                var json = JsonSerializer.Serialize(message.Event.ToEventMessage());
-
-                var serviceBusMessage = new ServiceBusMessage(Encoding.UTF8.GetBytes(json))
-                {
-                    PartitionKey = message.Event.AggregateId.ToString(),
-                    SessionId = message.Event.AggregateId.ToString(),
-                    Subject = message.Event.Type
-                };
+                    throw new InvalidOperationException("Event is null, please include the event in the query");
+                   
+                var serviceBusMessage = message.Event.ToMessage();
 
                 await _sender.SendMessageAsync(serviceBusMessage);
 

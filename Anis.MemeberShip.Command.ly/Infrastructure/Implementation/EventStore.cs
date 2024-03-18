@@ -7,10 +7,7 @@ namespace Anis.MemeberShip.Command.ly.Infrastructure.Implementation;
 
 public class EventStore : IEventStore
     {
-    public EventStore()
-    {
-        
-    }
+
         private readonly ApplicationDbContext _context;
 
     public readonly ServiceBusPublisher _serviceBusPublisher;
@@ -21,7 +18,7 @@ public class EventStore : IEventStore
         _serviceBusPublisher = serviceBusPublisher;
     }
 
-        public async Task CommitAsync(MemberShip memberShip, CancellationToken cancellationToken)
+        public async Task CommitAsync(MemberShipDomain memberShip, CancellationToken cancellationToken)
         {
             var events = memberShip.GetUncommittedEvents();
        

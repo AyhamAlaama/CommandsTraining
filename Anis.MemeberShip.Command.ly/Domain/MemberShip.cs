@@ -8,8 +8,6 @@ using Anis.MemeberShip.Command.ly.Features.Invitations.Command.AcceptInvitaion;
 using Anis.MemeberShip.Command.ly.Features.Invitations.Command.CancelInvitaion;
 using Anis.MemeberShip.Command.ly.Features.Invitations.Command.RejectInvitaion;
 using Anis.MemeberShip.Command.ly.Features.Invitations.Command.SendInvitaion;
-
-
 namespace Anis.MemeberShip.Command.ly.Domain;
 public class MemberShip : Aggregate<MemberShip>, IAggregate
 {

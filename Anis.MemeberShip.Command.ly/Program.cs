@@ -25,7 +25,9 @@ builder.Services.AddDbContext
 
 builder.Services.AddScoped<IEventStore, EventStore>();
 
-builder.Services.AddSingleton(new ServiceBusClient(builder.Configuration.GetConnectionString("MemberShipServiceBus")));
+builder.Services.AddSingleton(
+    new ServiceBusClient(
+        builder.Configuration.GetConnectionString("MemberShipServiceBus")));
 
 builder.Services.AddSingleton<ServiceBusPublisher>();
 var app = builder.Build();

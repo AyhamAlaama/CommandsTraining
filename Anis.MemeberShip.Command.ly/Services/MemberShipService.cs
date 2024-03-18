@@ -2,11 +2,11 @@ using Anis.MemeberShip.Command.ly.Extensions.ComamndsExtensions;
 using Anis.MemeberShip.Command.ly.v1;
 
 using Grpc.Core;
-using MemberShip = Anis.MemeberShip.Command.ly.v1.MemberShip;
+
 
 namespace Anis.MemeberShip.Command.ly.Services
 {
-    public class MemberShipService : MemberShip.MemberShipBase
+    public class MemberShipService : BaseDomain.MemberShipBase
     {
         private readonly IMediator _mediator;
         public MemberShipService(IMediator mediator)

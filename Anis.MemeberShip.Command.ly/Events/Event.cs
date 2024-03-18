@@ -1,4 +1,5 @@
 ﻿
+using Anis.MemberShip.Command.ly.Events;
 using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
 
 namespace Anis.MemeberShip.Command.ly.Events;
@@ -10,10 +11,12 @@ namespace Anis.MemeberShip.Command.ly.Events;
         string UserId,
         int Version,
         DateTime DateTime
-    )
+    ):IEvent
     {
         public string Type => GetType().Name;
-  }
+   
+        dynamic IEvent.Data => ((dynamic)this).Data;
+}
 
     public abstract record Event<T>(
         AggregateId AggregateId,
