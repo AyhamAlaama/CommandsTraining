@@ -1,6 +1,6 @@
-﻿using Anis.MemeberShip.Command.ly.v1;
+﻿using MemberShip.Command.v1;
 
-namespace Anis.MemeberShip.Command.ly.Features.Invitations.Command.RejectInvitaion;
+namespace MemberShip.Command.Features.Invitations.Command.RejectInvitaion;
 
 public class RejectInvitaionCommand : IRequest<InvitationResponse>
 {

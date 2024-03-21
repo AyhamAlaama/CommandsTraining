@@ -1,9 +1,10 @@
 ﻿using Grpc.Core;
 using Grpc.Core.Interceptors;
+using MemberShip.Command.Exceptions;
 
-namespace Anis.MemeberShip.Command.ly.Exceptions.Interceptors
+namespace MemberShip.Command.Exceptions.Interceptors
 {
-    public class MemberShipInterceptor:Interceptor
+    public class MemberShipInterceptor : Interceptor
     {
         public override async Task<TResponse> UnaryServerHandler<TRequest, TResponse>(TRequest request, ServerCallContext context, UnaryServerMethod<TRequest, TResponse> continuation)
         {
@@ -12,9 +13,9 @@ namespace Anis.MemeberShip.Command.ly.Exceptions.Interceptors
                 return await base.UnaryServerHandler(request, context, continuation);
 
             }
-            catch(AlreadyException e) 
+            catch (AlreadyException e)
             {
-                throw new RpcException(new Status(StatusCode.Unknown,e.Message));
+                throw new RpcException(new Status(StatusCode.Unknown, e.Message));
             }
             catch (NotFoundException e)
             {

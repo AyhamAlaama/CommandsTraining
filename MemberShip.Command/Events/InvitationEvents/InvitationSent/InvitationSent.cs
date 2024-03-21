@@ -1,10 +1,11 @@
-﻿using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
+﻿using MemberShip.Command.StronglyTypedIDs;
+using MemberShip.Command.Events;
 
-namespace Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationSent;
+namespace MemberShip.Command.Events.InvitationEvents.InvitationSent;
 public record InvitationSent(
        AggregateId AggregateId,
        int Sequence,
-  
+
        InvitationSentData Data,
        string UserId,
        int Version,

@@ -1,10 +1,10 @@
-using Anis.MemeberShip.Command.ly.Extensions.ComamndsExtensions;
-using Anis.MemeberShip.Command.ly.v1;
+using MemberShip.Command.Extensions.ComamndsExtensions;
+using MemberShip.Command.v1;
 
 using Grpc.Core;
 
 
-namespace Anis.MemeberShip.Command.ly.Services
+namespace MemberShip.Command.Services
 {
     public class MemberShipService : BaseDomain.MemberShipBase
     {

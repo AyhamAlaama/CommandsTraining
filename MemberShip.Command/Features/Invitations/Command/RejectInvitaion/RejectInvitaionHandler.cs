@@ -1,9 +1,10 @@
-﻿using Anis.MemeberShip.Command.ly.Const;
-using Anis.MemeberShip.Command.ly.Exceptions;
-using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
-using Anis.MemeberShip.Command.ly.v1;
+﻿using MemberShip.Command.Constants;
+using MemberShip.Command.Exceptions;
+using MemberShip.Command.StronglyTypedIDs;
+using MemberShip.Command.v1;
+using MemberShip.Command.Contracts;
 
-namespace Anis.MemeberShip.Command.ly.Features.Invitations.Command.RejectInvitaion;
+namespace MemberShip.Command.Features.Invitations.Command.RejectInvitaion;
 public class RejectInvitaionHandler : IRequestHandler<RejectInvitaionCommand, InvitationResponse>
 {
     private readonly IEventStore _eventStore;
@@ -17,17 +18,17 @@ public class RejectInvitaionHandler : IRequestHandler<RejectInvitaionCommand, In
         var aggregateId = new AggregateId(
                                 (SubscrptionId)request.SubscrptionId,
                                 (MemberId)request.MemberId);
-        var events = await _eventStore.GetAllAsync(aggregateId , cancellationToken);
+        var events = await _eventStore.GetAllAsync(aggregateId, cancellationToken);
 
         if (events.Count == 0)
             throw new NotFoundException("Subscription not found");
 
-        var memberShip = Domain.MemberShip.LoadFromHistory(events);
+        var memberShip = MemberShipDomain.LoadFromHistory(events);
 
         memberShip.RejectInvitation(request);
 
         await _eventStore.CommitAsync(memberShip, cancellationToken);
 
-        return new InvitationResponse { Id = events[0].AggregateId.ToString(), Message = Constants.Rejected };
+        return new InvitationResponse { Id = events[0].AggregateId.ToString(), Message = ResponseConstants.Rejected };
     }
 }

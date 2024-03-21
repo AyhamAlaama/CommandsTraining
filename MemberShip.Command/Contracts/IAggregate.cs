@@ -1,12 +1,12 @@
-﻿using Anis.MemeberShip.Command.ly.Events;
-using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
+﻿using MemberShip.Command.Events;
+using MemberShip.Command.StronglyTypedIDs;
 
-namespace Anis.MemeberShip.Command.ly.Contracts;
+namespace MemberShip.Command.Contracts;
 public interface IAggregate
-    {
-         AggregateId Id { get; }
-         int Sequence { get; }
-        IReadOnlyList<Event> GetUncommittedEvents();
-        void MarkChangesAsCommitted();
-    }
+{
+    AggregateId Id { get; }
+    int Sequence { get; }
+    IReadOnlyList<Event> GetUncommittedEvents();
+    void MarkChangesAsCommitted();
+}
 

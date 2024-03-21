@@ -1,27 +1,29 @@
 ﻿
-using Anis.MemeberShip.Command.ly.Infrastructure.MessageBus;
-using Anis.MemeberShip.Command.ly.Infrastructure.Persistence;
-using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
+using MemberShip.Command.Contracts;
+using MemberShip.Command.Events;
+using MemberShip.Command.StronglyTypedIDs;
+using MemberShip.Command.Infrastructure.MessageBus;
+using MemberShip.Command.Infrastructure.Persistence;
 
-namespace Anis.MemeberShip.Command.ly.Infrastructure.Implementation;
+namespace MemberShip.Command.Infrastructure.Implementation;
 
 public class EventStore : IEventStore
-    {
+{
 
-        private readonly ApplicationDbContext _context;
+    private readonly ApplicationDbContext _context;
 
     public readonly ServiceBusPublisher _serviceBusPublisher;
 
     public EventStore(ApplicationDbContext context, ServiceBusPublisher serviceBusPublisher)
-        {
-                _context= context;
+    {
+        _context = context;
         _serviceBusPublisher = serviceBusPublisher;
     }
 
-        public async Task CommitAsync(MemberShipDomain memberShip, CancellationToken cancellationToken)
-        {
-            var events = memberShip.GetUncommittedEvents();
-       
+    public async Task CommitAsync(MemberShipDomain memberShip, CancellationToken cancellationToken)
+    {
+        var events = memberShip.GetUncommittedEvents();
+
 
         await _context.Events.AddRangeAsync(memberShip.GetUncommittedEvents(), cancellationToken);
         var messages = events.Select(m => new OutboxMessage(m));

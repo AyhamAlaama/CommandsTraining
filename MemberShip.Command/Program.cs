@@ -1,10 +1,13 @@
-using Anis.MemeberShip.Command.ly.Exceptions.Interceptors;
-using Anis.MemeberShip.Command.ly.Infrastructure.MessageBus;
-using Anis.MemeberShip.Command.ly.Infrastructure.Persistence;
-using Anis.MemeberShip.Command.ly.Validators;
+using MemberShip.Command.Infrastructure.MessageBus;
+using MemberShip.Command.Infrastructure.Persistence;
+using MemberShip.Command.Validators;
 using Azure.Messaging.ServiceBus;
 using Calzolari.Grpc.AspNetCore.Validation;
+using MemberShip.Command.Contracts;
+using MemberShip.Command.Exceptions.Interceptors;
+using MemberShip.Command.Infrastructure.Implementation;
 using System.Reflection;
+using MemberShip.Command.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

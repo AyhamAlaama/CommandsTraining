@@ -1,20 +1,21 @@
-﻿using Anis.MemeberShip.Command.ly.Features.Invitations.Command.SendInvitaion;
-using Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationSent;
-using Anis.MemeberShip.Command.ly.Features.Invitations.Command.CancelInvitaion;
-using Anis.MemeberShip.Command.ly.Features.Invitations.Command.AcceptInvitaion;
-using Anis.MemeberShip.Command.ly.Features.Invitations.Command.RejectInvitaion;
-using Anis.MemeberShip.Command.ly.v1;
+﻿using MemberShip.Command.Features.Invitations.Command.SendInvitaion;
+using MemberShip.Command.Events.InvitationEvents.InvitationSent;
+using MemberShip.Command.Features.Invitations.Command.CancelInvitaion;
+using MemberShip.Command.Features.Invitations.Command.AcceptInvitaion;
+using MemberShip.Command.Features.Invitations.Command.RejectInvitaion;
+using MemberShip.Command.v1;
 
-namespace Anis.MemeberShip.Command.ly.Extensions.ComamndsExtensions;
+namespace MemberShip.Command.Extensions.ComamndsExtensions;
 
 public static class Extensions
 {
     public static SendInvitationCommand ToCommand(this SendInvitationRequest request) =>
-        new (){
-            AccountId= request.AccountId,
-            MemberId= request.MemberId,
-            SubscrptionId= request.SubscrptionId,
-            UserId  = request.UserId
+        new()
+        {
+            AccountId = request.AccountId,
+            MemberId = request.MemberId,
+            SubscrptionId = request.SubscrptionId,
+            UserId = request.UserId
         };
     public static CancelInvitaionCommand ToCommand(this CancelInvitationRequest request) =>
        new()

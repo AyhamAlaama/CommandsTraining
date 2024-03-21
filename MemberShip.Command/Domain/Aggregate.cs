@@ -1,6 +1,8 @@
-﻿using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
+﻿using MemberShip.Command.Contracts;
+using MemberShip.Command.Events;
+using MemberShip.Command.StronglyTypedIDs;
 
-namespace Anis.MemeberShip.Command.ly.Domain;
+namespace MemberShip.Command.Domain;
 public abstract class Aggregate<T> where T : Aggregate<T>, IAggregate
 {
     private readonly List<Event> _uncommittedEvents = new();
@@ -28,10 +30,7 @@ public abstract class Aggregate<T> where T : Aggregate<T>, IAggregate
     {
         var aggregate = (T?)Activator.CreateInstance(typeof(T), nonPublic: true);
 
-        if (aggregate == null)
-            throw new InvalidOperationException("Aggregate creation failed");
-
-        return aggregate;
+        return aggregate == null ? throw new InvalidOperationException("Aggregate creation failed") : aggregate;
     }
 
     private void ApplyPreviouslyCommittedChanges(List<Event> events)

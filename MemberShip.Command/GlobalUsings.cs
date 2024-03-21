@@ -1,10 +1,10 @@
-﻿global using Anis.MemeberShip.Command.ly.Domain;
-global using Anis.MemeberShip.Command.ly.Events;
-global using Anis.MemeberShip.Command.ly.Infrastructure.Implementation;
-global using Anis.MemeberShip.Command.ly.Contracts;
+﻿global using MemberShip.Command.Domain;
+global using MemberShip.Command.Events;
+global using MemberShip.Command.Infrastructure.Implementation;
+global using MemberShip.Command.Contracts;
 global using Microsoft.EntityFrameworkCore;
-global using Anis.MemeberShip.Command.ly.Services;
+global using MemberShip.Command.Services;
 global using MediatR;
 
-global using MemberShipDomain= Anis.MemeberShip.Command.ly.Domain.MemberShip;
-global using BaseDomain = Anis.MemeberShip.Command.ly.v1.MemberShip;
+global using MemberShipDomain = MemberShip.Command.Domain.MemberShip;
+global using BaseDomain = MemberShip.Command.v1.MemberShip;

@@ -1,11 +1,13 @@
-﻿namespace Anis.MemeberShip.Command.ly.Extensions.OutboxMessagesExtensions;
+﻿using MemberShip.Command.Events;
+
+namespace MemberShip.Command.Extensions.OutboxMessagesExtensions;
 public static class Extensions
 {
     public static EventMessage ToEventMessage(this Event @event)
     {
         return new EventMessage(
             Id: @event.Id,
-            AggregateId: @event.AggregateId.SubscrptionId.subscrptionId+"/"+
+            AggregateId: @event.AggregateId.SubscrptionId.subscrptionId + "/" +
                          @event.AggregateId.MemberId.memberId,
             Sequence: @event.Sequence,
             UserId: @event.UserId,

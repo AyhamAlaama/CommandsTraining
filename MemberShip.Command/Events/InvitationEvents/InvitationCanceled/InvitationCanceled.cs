@@ -1,7 +1,7 @@
-﻿using Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationRejected;
-using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
+﻿using MemberShip.Command.Events;
+using MemberShip.Command.StronglyTypedIDs;
 
-namespace Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationCanceled;
+namespace MemberShip.Command.Events.InvitationEvents.InvitationCanceled;
 public record InvitationCanceled(
        AggregateId AggregateId,
        int Sequence,
@@ -15,4 +15,3 @@ public record InvitationCanceled(
 
 
 
-    

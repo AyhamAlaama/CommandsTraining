@@ -1,12 +1,8 @@
-﻿using Anis.MemeberShip.Command.ly.Infrastructure.Persistence;
-using Azure.Messaging.ServiceBus;
-using System.Text.Json;
-using System.Text;
-using Anis.MemeberShip.Command.ly.Extensions;
-using Anis.MemeberShip.Command.ly.Extensions.OutboxMessagesExtensions;
-using Anis.MemberShip.Command.ly.Infrastructure.MessageBus;
+﻿using Azure.Messaging.ServiceBus;
+using MemberShip.Command.Infrastructure.MessageBus;
+using MemberShip.Command.Infrastructure.Persistence;
 
-namespace Anis.MemeberShip.Command.ly.Infrastructure.MessageBus;
+namespace MemberShip.Command.Infrastructure.MessageBus;
 
 public class ServiceBusPublisher
 {
@@ -62,7 +58,7 @@ public class ServiceBusPublisher
             {
                 if (message.Event is null)
                     throw new InvalidOperationException("Event is null, please include the event in the query");
-                   
+
                 var serviceBusMessage = message.Event.ToMessage();
 
                 await _sender.SendMessageAsync(serviceBusMessage);

@@ -1,6 +1,6 @@
-﻿using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
+﻿using MemberShip.Command.StronglyTypedIDs;
 
-namespace Anis.MemberShip.Command.ly.Events;
+namespace MemberShip.Command.Events;
 
 public interface IEvent
 {

@@ -1,6 +1,6 @@
-﻿using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
+﻿using MemberShip.Command.StronglyTypedIDs;
 
-namespace Anis.MemberShip.Command.ly.Infrastructure.MessageBus;
+namespace MemberShip.Command.Infrastructure.MessageBus;
 
 public class MessageBody
 {

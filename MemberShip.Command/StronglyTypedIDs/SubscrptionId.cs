@@ -1,4 +1,4 @@
-﻿namespace Anis.MemeberShip.Command.ly.StronglyTypedIDs;
+﻿namespace MemberShip.Command.StronglyTypedIDs;
 
 public readonly record struct SubscrptionId(string subscrptionId)
 {

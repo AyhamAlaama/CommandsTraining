@@ -1,8 +1,8 @@
-﻿using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
+﻿using MemberShip.Command.StronglyTypedIDs;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Anis.MemeberShip.Command.ly.Infrastructure.Persistence.Configurations;
+namespace MemberShip.Command.Infrastructure.Persistence.Configurations;
 
 public class BaseEventConfigurations : IEntityTypeConfiguration<Event>
 {

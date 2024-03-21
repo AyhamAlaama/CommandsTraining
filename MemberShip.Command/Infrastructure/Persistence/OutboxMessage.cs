@@ -1,13 +1,10 @@
-﻿namespace Anis.MemeberShip.Command.ly.Infrastructure.Persistence;
-
+﻿namespace MemberShip.Command.Infrastructure.Persistence;
 public class OutboxMessage
 {
-
     private OutboxMessage(int id)
     {
         Id = id;
     }
-
     public OutboxMessage(Event @event)
     {
         Event = @event;

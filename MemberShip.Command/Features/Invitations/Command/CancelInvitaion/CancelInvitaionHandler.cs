@@ -1,11 +1,12 @@
-﻿using Anis.MemeberShip.Command.ly.Const;
-using Anis.MemeberShip.Command.ly.Exceptions;
-using Anis.MemeberShip.Command.ly.Infrastructure.Implementation;
-using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
-using Anis.MemeberShip.Command.ly.v1;
+﻿using MemberShip.Command.Constants;
+using MemberShip.Command.Exceptions;
+using MemberShip.Command.Infrastructure.Implementation;
+using MemberShip.Command.StronglyTypedIDs;
+using MemberShip.Command.v1;
+using MemberShip.Command.Contracts;
 
 
-namespace Anis.MemeberShip.Command.ly.Features.Invitations.Command.CancelInvitaion;
+namespace MemberShip.Command.Features.Invitations.Command.CancelInvitaion;
 public class CancelInvitaionHandler : IRequestHandler<CancelInvitaionCommand, InvitationResponse>
 {
     private readonly IEventStore _eventStore;
@@ -25,12 +26,12 @@ public class CancelInvitaionHandler : IRequestHandler<CancelInvitaionCommand, In
         if (events.Count == 0)
             throw new NotFoundException("Subscription not found");
 
-        var memberShip = Domain.MemberShip.LoadFromHistory(events);
+        var memberShip = MemberShipDomain.LoadFromHistory(events);
 
         memberShip.CancelInvitation(request);
 
         await _eventStore.CommitAsync(memberShip, cancellationToken);
 
-        return new InvitationResponse { Id = events[0].AggregateId.ToString(),Message=Constants.Canceled };
+        return new InvitationResponse { Id = events[0].AggregateId.ToString(), Message = ResponseConstants.Canceled };
     }
 }

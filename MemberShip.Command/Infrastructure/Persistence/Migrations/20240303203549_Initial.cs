@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Anis.MemeberShip.Command.ly.Infrastructure.Persistence.Migrations
+namespace MemberShip.Command.Infrastructure.Persistence.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration

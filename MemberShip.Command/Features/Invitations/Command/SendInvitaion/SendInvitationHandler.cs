@@ -1,10 +1,11 @@
-﻿using Anis.MemeberShip.Command.ly.Const;
-using Anis.MemeberShip.Command.ly.Contracts;
-using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
-using Anis.MemeberShip.Command.ly.v1;
+﻿using MemberShip.Command.Constants;
+using MemberShip.Command.Contracts;
+using MemberShip.Command.StronglyTypedIDs;
+using MemberShip.Command.v1;
+using MemberShip.Command.Contracts;
 
 
-namespace Anis.MemeberShip.Command.ly.Features.Invitations.Command.SendInvitaion;
+namespace MemberShip.Command.Features.Invitations.Command.SendInvitaion;
 public class SendInvitationCommandHandler :
     IRequestHandler<SendInvitationCommand, InvitationResponse>
 {
@@ -25,16 +26,16 @@ public class SendInvitationCommandHandler :
 
         if (events.Count == 0)
         {
-            var memberShip = Domain.MemberShip.AddToSubscription(request);
+            var memberShip = MemberShipDomain.AddToSubscription(request);
             await _eventStore.CommitAsync(memberShip, cancellationToken);
-            return new InvitationResponse { Id = memberShip.Id.ToString(), Message = Constants.Sent };
+            return new InvitationResponse { Id = memberShip.Id.ToString(), Message = ResponseConstants.Sent };
         }
         else
         {
-            var memberShip = Domain.MemberShip.LoadFromHistory(events);
+            var memberShip = MemberShipDomain.LoadFromHistory(events);
             memberShip.SendNewInvitation(request);
             await _eventStore.CommitAsync(memberShip, cancellationToken);
-            return new InvitationResponse { Id = memberShip.Id.ToString(), Message = Constants.Sent };
+            return new InvitationResponse { Id = memberShip.Id.ToString(), Message = ResponseConstants.Sent };
 
         }
 

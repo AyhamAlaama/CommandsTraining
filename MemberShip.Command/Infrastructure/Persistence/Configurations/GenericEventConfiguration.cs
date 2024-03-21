@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using MemberShip.Command.Events;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Anis.MemeberShip.Command.ly.Infrastructure.Persistence.Configurations;
+namespace MemberShip.Command.Infrastructure.Persistence.Configurations;
 
 public class GenericEventConfiguration<TEntity, TData> : IEntityTypeConfiguration<TEntity>
         where TEntity : Event<TData>
@@ -16,7 +17,7 @@ public class GenericEventConfiguration<TEntity, TData> : IEntityTypeConfiguratio
         ).HasColumnName("Data");
     }
 
-    private static JsonSerializerOptions GetJsonSerializerOptions() => new JsonSerializerOptions()
+    private static JsonSerializerOptions GetJsonSerializerOptions() => new()
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull

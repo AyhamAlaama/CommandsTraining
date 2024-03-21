@@ -1,6 +1,6 @@
-﻿using Anis.MemeberShip.Command.ly.v1;
+﻿using MemberShip.Command.v1;
 using MediatR;
-namespace Anis.MemeberShip.Command.ly.Features.Invitations.Command.CancelInvitaion;
+namespace MemberShip.Command.Features.Invitations.Command.CancelInvitaion;
 
 public class CancelInvitaionCommand : IRequest<InvitationResponse>
 {

@@ -1,10 +1,11 @@
-﻿using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
+﻿using MemberShip.Command.Events;
+using MemberShip.Command.StronglyTypedIDs;
 
-namespace Anis.MemeberShip.Command.ly.Contracts;
+namespace MemberShip.Command.Contracts;
 public interface IEventStore
-    {
-        Task<List<Event>> GetAllAsync(AggregateId aggregateId,CancellationToken cancellationToken);
-        Task CommitAsync(MemberShipDomain memberShip, CancellationToken cancellationToken);
+{
+    Task<List<Event>> GetAllAsync(AggregateId aggregateId, CancellationToken cancellationToken);
+    Task CommitAsync(MemberShipDomain memberShip, CancellationToken cancellationToken);
 
 
 }

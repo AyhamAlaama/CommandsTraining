@@ -1,15 +1,15 @@
-﻿using Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationAccepted;
-using Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationCanceled;
-using Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationRejected;
-using Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationSent;
-using Anis.MemeberShip.Command.ly.Exceptions;
-using Anis.MemeberShip.Command.ly.Extensions.EventsExtensions;
-using Anis.MemeberShip.Command.ly.Features.Invitations.Command.AcceptInvitaion;
-using Anis.MemeberShip.Command.ly.Features.Invitations.Command.CancelInvitaion;
-using Anis.MemeberShip.Command.ly.Features.Invitations.Command.RejectInvitaion;
-using Anis.MemeberShip.Command.ly.Features.Invitations.Command.SendInvitaion;
-namespace Anis.MemeberShip.Command.ly.Domain;
-public class MemberShip : Aggregate<MemberShip>, IAggregate
+﻿using MemberShip.Command.Events.InvitationEvents.InvitationAccepted;
+using MemberShip.Command.Events.InvitationEvents.InvitationCanceled;
+using MemberShip.Command.Events.InvitationEvents.InvitationRejected;
+using MemberShip.Command.Events.InvitationEvents.InvitationSent;
+using MemberShip.Command.Exceptions;
+using MemberShip.Command.Extensions.EventsExtensions;
+using MemberShip.Command.Features.Invitations.Command.AcceptInvitaion;
+using MemberShip.Command.Features.Invitations.Command.CancelInvitaion;
+using MemberShip.Command.Features.Invitations.Command.RejectInvitaion;
+using MemberShip.Command.Features.Invitations.Command.SendInvitaion;
+namespace MemberShip.Command.Domain;
+public class MemberShip : Aggregate<MemberShipDomain>, IAggregate
 {
 
     private MemberShip() { }
@@ -38,19 +38,19 @@ public class MemberShip : Aggregate<MemberShip>, IAggregate
         }
     }
     //Add New Member To subscrption ( Invite ) 
-    public static MemberShip AddToSubscription(SendInvitationCommand cmd)
+    public static MemberShipDomain AddToSubscription(SendInvitationCommand cmd)
     {
-        var member = new MemberShip();
+        var member = new MemberShipDomain();
         member.ApplyNewChange(cmd.ToEvent());
         return member;
     }
-    public  void SendNewInvitation(SendInvitationCommand cmd)
+    public void SendNewInvitation(SendInvitationCommand cmd)
     {
         if (HasPendingInvitation) throw new AlreadyException("Has Pending Invitation !");
         if (IsJoined) throw new AlreadyException($"{nameof(SendNewInvitation)}: Member Already Joined !");
-       
+
         ApplyNewChange(cmd.ToEvent(NextSequence));
-       
+
     }
     //cancel
     public void CancelInvitation(CancelInvitaionCommand cmd)
@@ -88,7 +88,7 @@ public class MemberShip : Aggregate<MemberShip>, IAggregate
         IsJoined = false;
     }
     //Mutate Accepted Event
-    public void Mutate(InvitationAccepted _) 
+    public void Mutate(InvitationAccepted _)
     {
         HasPendingInvitation = false;
         IsJoined = true;

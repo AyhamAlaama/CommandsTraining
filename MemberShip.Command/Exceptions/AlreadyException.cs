@@ -1,5 +1,5 @@
-﻿namespace Anis.MemeberShip.Command.ly.Exceptions;
+﻿namespace MemberShip.Command.Exceptions;
 public class AlreadyException : Exception
 {
-    public AlreadyException(string message):base(message){}
+    public AlreadyException(string message) : base(message) { }
 }

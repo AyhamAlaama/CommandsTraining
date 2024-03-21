@@ -1,34 +1,34 @@
-﻿using Anis.MemeberShip.Command.ly.Features.Invitations.Command.SendInvitaion;
-using Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationSent;
-using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
-using Anis.MemeberShip.Command.ly.Features.Invitations.Command.CancelInvitaion;
-using Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationCanceled;
-using Anis.MemeberShip.Command.ly.Features.Invitations.Command.AcceptInvitaion;
-using Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationAccepted;
-using Anis.MemeberShip.Command.ly.Features.Invitations.Command.RejectInvitaion;
-using Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationRejected;
+﻿using MemberShip.Command.Features.Invitations.Command.SendInvitaion;
+using MemberShip.Command.StronglyTypedIDs;
+using MemberShip.Command.Features.Invitations.Command.CancelInvitaion;
+using MemberShip.Command.Events.InvitationEvents.InvitationCanceled;
+using MemberShip.Command.Features.Invitations.Command.AcceptInvitaion;
+using MemberShip.Command.Events.InvitationEvents.InvitationAccepted;
+using MemberShip.Command.Features.Invitations.Command.RejectInvitaion;
+using MemberShip.Command.Events.InvitationEvents.InvitationRejected;
+using MemberShip.Command.Events.InvitationEvents.InvitationSent;
 
-namespace Anis.MemeberShip.Command.ly.Extensions.EventsExtensions;
+namespace MemberShip.Command.Extensions.EventsExtensions;
 
 public static class Extensions
 {
     public static InvitationSent ToEvent(this SendInvitationCommand cmd) =>
         new(
-           AggregateId: new AggregateId((SubscrptionId)cmd.SubscrptionId,(MemberId)cmd.MemberId),
+           AggregateId: new AggregateId((SubscrptionId)cmd.SubscrptionId, (MemberId)cmd.MemberId),
            Sequence: 1,
             DateTime: DateTime.UtcNow,
             UserId: cmd.UserId,
-            Version:1,
+            Version: 1,
 
-            Data: new InvitationSentData ( 
+            Data: new InvitationSentData(
                  AccountId: cmd.AccountId,
-                 MemberId:cmd.MemberId,
-                 UserId:cmd.UserId,
-                 SubscriptionId:cmd.SubscrptionId)
+                 MemberId: cmd.MemberId,
+                 UserId: cmd.UserId,
+                 SubscriptionId: cmd.SubscrptionId)
             );
     public static InvitationSent ToEvent(this SendInvitationCommand cmd, int Sequence) =>
         new(
-           AggregateId: new AggregateId((SubscrptionId)cmd.SubscrptionId,(MemberId)cmd.MemberId),
+           AggregateId: new AggregateId((SubscrptionId)cmd.SubscrptionId, (MemberId)cmd.MemberId),
 
            Sequence: Sequence,
             DateTime: DateTime.UtcNow,
@@ -41,9 +41,9 @@ public static class Extensions
                  UserId: cmd.UserId,
                  SubscriptionId: cmd.SubscrptionId)
             );
-    public static InvitationCanceled ToEvent(this CancelInvitaionCommand cmd,int Sequence) =>
+    public static InvitationCanceled ToEvent(this CancelInvitaionCommand cmd, int Sequence) =>
         new(
-           AggregateId: new AggregateId((SubscrptionId)cmd.SubscrptionId,(MemberId)cmd.MemberId),
+           AggregateId: new AggregateId((SubscrptionId)cmd.SubscrptionId, (MemberId)cmd.MemberId),
 
            Sequence: Sequence,
             DateTime: DateTime.UtcNow,
@@ -51,7 +51,7 @@ public static class Extensions
             Version: 1,
 
             Data: new InvitationCanceledData(
-                
+
                  AccountId: cmd.AccountId,
                  MemberId: cmd.MemberId,
                  UserId: cmd.UserId,
@@ -59,15 +59,15 @@ public static class Extensions
             );
     public static InvitationAccepted ToEvent(this AcceptInvitaionCommand cmd, int Sequence) =>
         new(
-           AggregateId: new AggregateId((SubscrptionId)cmd.SubscrptionId,(MemberId)cmd.MemberId),
+           AggregateId: new AggregateId((SubscrptionId)cmd.SubscrptionId, (MemberId)cmd.MemberId),
 
-           Sequence: Sequence, 
+           Sequence: Sequence,
             DateTime: DateTime.UtcNow,
             UserId: cmd.UserId,
             Version: 1,
 
             Data: new InvitationAcceptedData(
-              
+
                  AccountId: cmd.AccountId,
                  MemberId: cmd.MemberId,
                  UserId: cmd.UserId,
@@ -82,7 +82,7 @@ public static class Extensions
           Version: 1,
 
           Data: new InvitationRejectedData(
-             
+
                AccountId: cmd.AccountId,
                MemberId: cmd.MemberId,
                UserId: cmd.UserId,

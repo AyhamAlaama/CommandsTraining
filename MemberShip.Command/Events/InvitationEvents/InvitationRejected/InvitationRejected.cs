@@ -1,7 +1,8 @@
-﻿using Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationSent;
-using Anis.MemeberShip.Command.ly.StronglyTypedIDs;
+﻿using MemberShip.Command.Events.InvitationEvents.InvitationSent;
+using MemberShip.Command.StronglyTypedIDs;
+using MemberShip.Command.Events;
 
-namespace Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationRejected;
+namespace MemberShip.Command.Events.InvitationEvents.InvitationRejected;
 public record InvitationRejected(
       AggregateId AggregateId,
        int Sequence,

@@ -1,5 +1,5 @@
-﻿namespace Anis.MemeberShip.Command.ly.Exceptions;
+﻿namespace MemberShip.Command.Exceptions;
 public class NotFoundException : Exception
 {
-    public NotFoundException(string message):base(message){}
+    public NotFoundException(string message) : base(message) { }
 }

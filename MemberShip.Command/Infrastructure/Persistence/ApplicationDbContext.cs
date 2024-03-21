@@ -1,11 +1,12 @@
-﻿using Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationAccepted;
-using Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationCanceled;
-using Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationRejected;
-using Anis.MemeberShip.Command.ly.Events.InvitationEvents.InvitationSent;
-using Anis.MemeberShip.Command.ly.Infrastructure.Persistence.Configurations;
+﻿using MemberShip.Command.Events;
+using MemberShip.Command.Events.InvitationEvents.InvitationAccepted;
+using MemberShip.Command.Events.InvitationEvents.InvitationCanceled;
+using MemberShip.Command.Events.InvitationEvents.InvitationRejected;
+using MemberShip.Command.Events.InvitationEvents.InvitationSent;
+using MemberShip.Command.Infrastructure.Persistence.Configurations;
 
-namespace Anis.MemeberShip.Command.ly.Infrastructure.Persistence;
-    public class ApplicationDbContext:DbContext
+namespace MemberShip.Command.Infrastructure.Persistence;
+public class ApplicationDbContext:DbContext
     {
        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> opt) : base(opt) { }
        public DbSet<Event> Events { get; set; }

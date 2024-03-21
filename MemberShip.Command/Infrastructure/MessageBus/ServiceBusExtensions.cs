@@ -1,11 +1,10 @@
-﻿using Anis.MemberShip.Command.ly.Events;
-using Azure.Messaging.ServiceBus;
-
+﻿using Azure.Messaging.ServiceBus;
+using MemberShip.Command.Events;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Anis.MemberShip.Command.ly.Infrastructure.MessageBus
+namespace MemberShip.Command.Infrastructure.MessageBus
 {
     public static class ServiceBusExtensions
     {
