@@ -1,6 +1,6 @@
-﻿using Anis.MemberShip.Query.ly.EventHandler.Invitation.Sent;
+﻿using MemberShip.Query.EventHandler.Invitation.Sent;
 
-namespace Anis.MemberShip.Query.ly.Entities;
+namespace MemberShip.Query.Entities;
 
 public class MemberShip
 {
@@ -30,15 +30,15 @@ public class MemberShip
 
     }
 
-    public static MemberShip FromSentEvent(InvitationSent @event) => new
+    public static MemberShipEntity FromSentEvent(InvitationSent @event) => new
         (
-        id:@event.AggregateId,
-        sequence:@event.Sequence,
-        accountId:@event.Data.AccountId,
+        id: @event.AggregateId,
+        sequence: @event.Sequence,
+        accountId: @event.Data.AccountId,
         subscriptionId: @event.Data.SubscriptionId,
         memberId: @event.Data.MemberId,
         userId: @event.Data.UserId,
-        inviteStatus:"P"
+        inviteStatus: "P"
         );
     public void IncrementSequence() => Sequence++;
 }

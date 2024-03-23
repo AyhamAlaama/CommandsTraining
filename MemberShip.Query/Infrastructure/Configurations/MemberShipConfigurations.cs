@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Anis.MemberShip.Query.ly.Infrastructre.Configurations
+namespace MemberShip.Query.Infrastructure.Configurations
 {
     public class MemberShipConfigurations : IEntityTypeConfiguration<MemberShipEntity>
     {

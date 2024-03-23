@@ -1,4 +1,4 @@
-﻿namespace Anis.MemberShip.Query.ly.EventHandler;
+﻿namespace MemberShip.Query.EventHandler;
 
 public record class UnknownEvent(
     string AggregateId,

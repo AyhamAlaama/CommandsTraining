@@ -1,8 +1,8 @@
-﻿using Anis.MemberShip.Query.ly.Infrastructure.Helpers;
-using Azure.Messaging.ServiceBus;
+﻿using Azure.Messaging.ServiceBus;
+using MemberShip.Query.Infrastructure.Helpers;
 using Microsoft.Extensions.Options;
 
-namespace Anis.MemberShip.Query.ly.Infrastructre.ServiceBus.MemberShip;
+namespace MemberShip.Query.Infrastructure.ServiceBus.MemberShip;
 
 public class MemberShipServiceBus
 {

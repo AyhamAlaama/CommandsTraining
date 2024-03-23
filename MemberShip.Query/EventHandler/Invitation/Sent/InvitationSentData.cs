@@ -1,6 +1,6 @@
-﻿namespace Anis.MemberShip.Query.ly.EventHandler.Invitation.Sent;
+﻿namespace MemberShip.Query.EventHandler.Invitation.Sent;
 public record InvitationSentData(
-    string AccountId, 
-    string SubscriptionId, 
-    string MemberId, 
+    string AccountId,
+    string SubscriptionId,
+    string MemberId,
     string UserId);

@@ -2,21 +2,21 @@
 using MediatR;
 using System.Text.Json;
 using System.Text;
-using Anis.MemberShip.Query.ly.EventHandler.Invitation.Sent;
-using Anis.MemberShip.Query.ly.EventHandler;
-using Anis.MemberShip.Query.ly.Infrastructure.Helpers;
+using MemberShip.Query.EventHandler.Invitation.Sent;
+using MemberShip.Query.Infrastructure.Helpers;
+using MemberShip.Query.EventHandler;
 
-namespace Anis.MemberShip.Query.ly.Infrastructre.ServiceBus.MemberShip
+namespace MemberShip.Query.Infrastructure.ServiceBus.MemberShip
 {
     public class MemberShipListener : IHostedService
     {
         private readonly ServiceBusSessionProcessor _processor;
         private readonly ILogger<MemberShipListener> _logger;
         private readonly IServiceProvider _serviceProvider;
-      
+
 
         public MemberShipListener(MemberShipServiceBus serviceBus,
-            IConfiguration configuration, 
+            IConfiguration configuration,
             ILogger<MemberShipListener> logger,
             IServiceProvider serviceProvider)
         {
@@ -37,16 +37,16 @@ namespace Anis.MemberShip.Query.ly.Infrastructre.ServiceBus.MemberShip
             _processor.ProcessMessageAsync += Processor_ProcessMessageAsync;
             _processor.ProcessErrorAsync += Processor_ProcessErrorAsync;
 
-         
+
 
         }
 
-       
+
 
         private async Task Processor_ProcessMessageAsync(ProcessSessionMessageEventArgs arg)
         {
             var json = Encoding.UTF8.GetString(arg.Message.Body);
-            
+
             using var scope = _serviceProvider.CreateScope();
             var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
 
@@ -68,11 +68,11 @@ namespace Anis.MemberShip.Query.ly.Infrastructre.ServiceBus.MemberShip
             }
         }
 
-     
 
-            private static T Deserialize<T>(string json)
-            => JsonSerializer.Deserialize<T>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
-            ?? throw new InvalidOperationException("Failed to deserialize message");
+
+        private static T Deserialize<T>(string json)
+        => JsonSerializer.Deserialize<T>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
+        ?? throw new InvalidOperationException("Failed to deserialize message");
 
         private Task Processor_ProcessErrorAsync(ProcessErrorEventArgs arg)
         {

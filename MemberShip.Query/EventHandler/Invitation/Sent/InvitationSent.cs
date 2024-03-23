@@ -1,4 +1,6 @@
-﻿namespace Anis.MemberShip.Query.ly.EventHandler.Invitation.Sent
+﻿using MemberShip.Query.EventHandler;
+
+namespace MemberShip.Query.EventHandler.Invitation.Sent
 {
     public record InvitationSent(
        string AggregateId,
@@ -7,8 +9,8 @@
        DateTime DateTime,
        string UserId,
        int Version
-       
+
    ) :
     Event<InvitationSentData>
-    (AggregateId, Sequence, Data, DateTime, UserId, Version );
+    (AggregateId, Sequence, Data, DateTime, UserId, Version);
 }

@@ -1,7 +1,7 @@
-﻿using Anis.MemberShip.Query.ly.Infrastructre.Persistence;
-using MediatR;
+﻿using MediatR;
+using MemberShip.Query.Infrastructure.Persistence;
 
-namespace Anis.MemberShip.Query.ly.EventHandler
+namespace MemberShip.Query.EventHandler
 {
     public class UnknownEventHandler : IRequestHandler<UnknownEvent, bool>
     {

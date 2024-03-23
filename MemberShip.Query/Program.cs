@@ -1,9 +1,8 @@
-using Anis.MemberShip.Query.ly.Infrastructre.Persistence;
-using Anis.MemberShip.Query.ly.Infrastructre.ServiceBus.MemberShip;
-using Anis.MemberShip.Query.ly.Infrastructure.Helpers;
-using Anis.MemberShip.Query.ly.Services;
-
 using MediatR;
+using MemberShip.Query.Infrastructure.Helpers;
+using MemberShip.Query.Infrastructure.Persistence;
+using MemberShip.Query.Infrastructure.ServiceBus.MemberShip;
+using MemberShip.Query.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 

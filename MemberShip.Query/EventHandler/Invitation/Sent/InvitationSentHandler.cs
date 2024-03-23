@@ -1,8 +1,8 @@
-﻿using Anis.MemberShip.Query.ly.Infrastructre.Persistence;
-using MediatR;
+﻿using MediatR;
+using MemberShip.Query.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace Anis.MemberShip.Query.ly.EventHandler.Invitation.Sent
+namespace MemberShip.Query.EventHandler.Invitation.Sent
 {
     public class InvitationSentHandler : IRequestHandler<InvitationSent, bool>
     {

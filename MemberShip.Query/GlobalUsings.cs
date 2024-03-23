@@ -1,1 +1,2 @@
-﻿global using MemberShipEntity = Anis.MemberShip.Query.ly.Entities.MemberShip;
+﻿global using MemberShipEntity = MemberShip.Query.Entities.MemberShip;
+
