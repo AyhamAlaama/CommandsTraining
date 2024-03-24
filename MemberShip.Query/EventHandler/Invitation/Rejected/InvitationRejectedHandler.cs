@@ -24,7 +24,7 @@ public class InvitationRejectedHandler : IRequestHandler<InvitationRejected, boo
 
         if (@event.Sequence > memberShip.Sequence + 1) return false;
 
-        memberShip.InvitationRejected();
+        memberShip.InvitationRejected(@event);
 
         await _context.SaveChangesAsync(cancellationToken);
         return true;

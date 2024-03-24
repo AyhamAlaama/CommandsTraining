@@ -23,7 +23,7 @@ public class InvitationAcceptedHandler : IRequestHandler<InvitationAccepted, boo
 
         if (@event.Sequence > memberShip.Sequence + 1) return false;
 
-        memberShip.InvitationAccepted();
+        memberShip.InvitationAccepted(@event);
 
         await _context.SaveChangesAsync(cancellationToken);
         return true;

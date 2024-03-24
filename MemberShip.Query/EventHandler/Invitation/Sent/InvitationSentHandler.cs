@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using MemberShip.Query.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.Eventing.Reader;
 
 namespace MemberShip.Query.EventHandler.Invitation.Sent
 {
@@ -16,9 +17,13 @@ namespace MemberShip.Query.EventHandler.Invitation.Sent
 
         public async Task<bool> Handle(InvitationSent @event, CancellationToken cancellationToken)
         {
-            if (await _context.MemberShips.AnyAsync(e => e.Id == @event.AggregateId, cancellationToken))
-                return true;
-            await _context.MemberShips.AddAsync(MemberShipEntity.FromSentEvent(@event), cancellationToken);
+            var memberShip = await _context.MemberShips.FindAsync(@event.AggregateId);
+
+            if (memberShip is null)
+                await _context.MemberShips.AddAsync(MemberShipEntity.FromSentEvent(@event), cancellationToken);
+            else
+                memberShip.NewInvitationSent(@event);
+
             await _context.SaveChangesAsync(cancellationToken);
             return true;
         }

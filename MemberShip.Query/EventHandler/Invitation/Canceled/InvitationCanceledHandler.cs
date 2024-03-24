@@ -25,7 +25,7 @@ namespace MemberShip.Query.EventHandler.Invitation.Canceled
 
             if (@event.Sequence > memberShip.Sequence + 1) return false;
 
-            memberShip.InvitationCanceled();
+            memberShip.InvitationCanceled(@event);
 
             await _context.SaveChangesAsync(cancellationToken);
             return true;
