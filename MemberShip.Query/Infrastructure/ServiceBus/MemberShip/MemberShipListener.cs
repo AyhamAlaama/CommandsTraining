@@ -5,6 +5,9 @@ using System.Text;
 using MemberShip.Query.EventHandler.Invitation.Sent;
 using MemberShip.Query.Infrastructure.Helpers;
 using MemberShip.Query.EventHandler;
+using MemberShip.Query.EventHandler.Invitation.Canceled;
+using MemberShip.Query.EventHandler.Invitation.Accepted;
+using MemberShip.Query.EventHandler.Invitation.Rejected;
 
 namespace MemberShip.Query.Infrastructure.ServiceBus.MemberShip
 {
@@ -53,6 +56,9 @@ namespace MemberShip.Query.Infrastructure.ServiceBus.MemberShip
             var isHandled = arg.Message.Subject switch
             {
                 nameof(InvitationSent) => await mediator.Send(Deserialize<InvitationSent>(json)),
+                nameof(InvitationCanceled) => await mediator.Send(Deserialize<InvitationCanceled>(json)),
+                nameof(InvitationAccepted) => await mediator.Send(Deserialize<InvitationAccepted>(json)),
+                nameof(InvitationRejected) => await mediator.Send(Deserialize<InvitationRejected>(json)),
                 _ => await mediator.Send(Deserialize<UnknownEvent>(json)),
             };
 

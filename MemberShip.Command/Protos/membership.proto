@@ -21,25 +21,22 @@ message SendInvitationRequest {
   string userId = 4;
 }
 message CancelInvitationRequest {
-  string invitation_id =1;
-  string accountId = 2;
-  string subscrptionId = 3;
-  string memberId = 4;
-  string userId = 5;
+  string accountId = 1;
+  string subscrptionId = 2;
+  string memberId = 3;
+  string userId = 4;
 }
 message AcceptInvitationRequest {
-  string invitation_id =1;
-  string accountId = 2;
-  string subscrptionId = 3;
-  string memberId = 4;
-  string userId = 5;
+  string accountId = 1;
+  string subscrptionId = 2;
+  string memberId = 3;
+  string userId = 4;
 }
 message RejectInvitationRequest {
- string invitation_id =1;
-  string accountId = 2;
-  string subscrptionId = 3;
-  string memberId = 4;
-  string userId = 5;
+  string accountId = 1;
+  string subscrptionId = 2;
+  string memberId = 3;
+  string userId = 4;
 }
 
 message InvitationResponse {

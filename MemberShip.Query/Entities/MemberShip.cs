@@ -1,4 +1,5 @@
-﻿using MemberShip.Query.EventHandler.Invitation.Sent;
+﻿using MemberShip.Query.EventHandler.Invitation.Canceled;
+using MemberShip.Query.EventHandler.Invitation.Sent;
 
 namespace MemberShip.Query.Entities;
 
@@ -38,7 +39,22 @@ public class MemberShip
         subscriptionId: @event.Data.SubscriptionId,
         memberId: @event.Data.MemberId,
         userId: @event.Data.UserId,
-        inviteStatus: "P"
+        inviteStatus: "Pending"
         );
+    public void InvitationCanceled()
+    {
+
+        InviteStatus = "Canceled";
+    }
+    public void InvitationAccepted()
+    {
+
+        InviteStatus = "Joined";
+    }
+    public void InvitationRejected()
+    {
+
+        InviteStatus = "Rejected";
+    }
     public void IncrementSequence() => Sequence++;
 }

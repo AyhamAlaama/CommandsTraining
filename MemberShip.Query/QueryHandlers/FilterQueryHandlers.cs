@@ -22,6 +22,7 @@ namespace MemberShip.Query.QueryHandlers
         private async Task<FilterResult> FilterAsync(FilterQuery filter, CancellationToken cancellationToken)
         {
             var query = _context.MemberShips.AsQueryable();
+            
             return new FilterResult(
                 memberShipEntity: query.Where(t => t.UserId == filter.UserId).ToList()
             ) ;

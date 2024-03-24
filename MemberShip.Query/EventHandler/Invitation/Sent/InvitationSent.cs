@@ -1,6 +1,4 @@
-﻿using MemberShip.Query.EventHandler;
-
-namespace MemberShip.Query.EventHandler.Invitation.Sent
+﻿namespace MemberShip.Query.EventHandler.Invitation.Sent
 {
     public record InvitationSent(
        string AggregateId,
